@@ -14,19 +14,22 @@ export class ModalService {
   constructor() {
   }
 
-  isModalOpen() {
-    return true;
+  isModalOpen(id: string): boolean {
+    return !!this.modals.find(element => element.id === id)?.visible;
   }
 
-  toggleModal() {
-    // this.isVisible = !this.isVisible
+  toggleModal(id: string) {
+    const model = this.modals.find(element => element.id === id)
+    if (model) {
+      model.visible = !model.visible;
+    }
   }
 
   register(id: string) {
     this.modals.push({
       id,
-      visible:false
+      visible: false
     })
-    console.log("Modal Service :: register :: Modals-: ",this.modals)
+    console.log("Modal Service :: register :: Modals-: ", this.modals)
   }
 }
