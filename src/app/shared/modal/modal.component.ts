@@ -8,10 +8,13 @@ import {ModalService} from "../../services/modal.service";
 })
 export class ModalComponent implements OnInit {
 
-  constructor(private _modalService: ModalService) {
+  constructor(public _modalService: ModalService) {
   }
 
   ngOnInit(): void {
   }
 
+  onCloseModal($event: Event) {
+    this._modalService.toggleModal();
+  }
 }

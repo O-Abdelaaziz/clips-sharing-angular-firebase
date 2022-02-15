@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ModalService} from "../services/modal.service";
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _modalService: ModalService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  onOpenModal($event: Event) {
+    $event.preventDefault();
+    this._modalService.toggleModal();
   }
 
 }

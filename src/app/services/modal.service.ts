@@ -8,4 +8,12 @@ export class ModalService {
 
   constructor() {
   }
+
+  isModalOpen() {
+    return this.isVisible;
+  }
+
+  toggleModal() {
+    this.isVisible = !this.isVisible
+  }
 }
