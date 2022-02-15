@@ -1,19 +1,32 @@
 import {Injectable} from '@angular/core';
 
+interface IModal {
+  id: string;
+  visible: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
-  public isVisible: boolean = false;
+  private modals: IModal[] = [];
 
   constructor() {
   }
 
   isModalOpen() {
-    return this.isVisible;
+    return true;
   }
 
   toggleModal() {
-    this.isVisible = !this.isVisible
+    // this.isVisible = !this.isVisible
+  }
+
+  register(id: string) {
+    this.modals.push({
+      id,
+      visible:false
+    })
+    console.log("Modal Service :: register :: Modals-: ",this.modals)
   }
 }
