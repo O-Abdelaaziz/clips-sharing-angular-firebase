@@ -9,7 +9,7 @@ interface IModal {
   providedIn: 'root'
 })
 export class ModalService {
-  private modals: IModal[] = [];
+  public modals: IModal[] = [];
 
   constructor() {
   }
@@ -30,6 +30,9 @@ export class ModalService {
       id,
       visible: false
     })
-    console.log("Modal Service :: register :: Modals-: ", this.modals)
+  }
+
+  unregister(id: string) {
+    this.modals = this.modals.filter(element => element.id !== id);
   }
 }
