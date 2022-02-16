@@ -7,11 +7,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public fullName = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3)]
-  );
-  public email = new FormControl('');
+  public fullName = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  public email = new FormControl('', [Validators.required, Validators.email]);
   public age = new FormControl('');
   public password = new FormControl('');
   public confirmPassword = new FormControl('');
