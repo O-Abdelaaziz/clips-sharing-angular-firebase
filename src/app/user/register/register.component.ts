@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -7,37 +7,27 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public isSubmitted: boolean = false;
+  public fullName = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3)]
+  );
+  public email = new FormControl('');
+  public age = new FormControl('');
+  public password = new FormControl('');
+  public confirmPassword = new FormControl('');
+  public phoneNumber = new FormControl('');
   public registerFromGroup: FormGroup = new FormGroup({
-    fullName: new FormControl(''),
-    email: new FormControl(''),
-    age: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    phoneNumber: new FormControl(''),
+    fullName: this.fullName,
+    email: this.email,
+    age: this.age,
+    password: this.password,
+    confirmPassword: this.confirmPassword,
+    phoneNumber: this.phoneNumber
   });
 
-  constructor(
-    private _formBuilder: FormBuilder,
-  ) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.registerFromGroup = this._formBuilder.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.minLength(2)]],
-      age: ['', [Validators.required, Validators.minLength(2)]],
-      password: ['', [Validators.required, Validators.minLength(2)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(2)]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(2)]],
-    });
-  }
-
-  get registerFromControls(): { [key: string]: AbstractControl } {
-    return this.registerFromGroup.controls;
-  }
-
-  onRegisterFormSubmit() {
-    console.log("From submitted");
   }
 }
