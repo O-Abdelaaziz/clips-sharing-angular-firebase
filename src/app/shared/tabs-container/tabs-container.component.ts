@@ -32,5 +32,6 @@ export class TabsContainerComponent implements AfterContentInit {
       tab.activeTab = false;
     })
     tab.activeTab = true;
+    return false;
   }
 }
