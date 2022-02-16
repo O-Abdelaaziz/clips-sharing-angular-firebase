@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  public isSubmitted: boolean = false;
   public registerFromGroup: FormGroup = new FormGroup({
     fullName: new FormControl(''),
     email: new FormControl(''),
@@ -32,4 +33,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  get registerFromControls(): { [key: string]: AbstractControl } {
+    return this.registerFromGroup.controls;
+  }
+
+  onRegisterFormSubmit() {
+    console.log("From submitted");
+  }
 }
