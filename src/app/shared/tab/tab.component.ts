@@ -10,6 +10,9 @@ export class TabComponent implements OnInit {
   @Input()
   public titleTab: string = '';
 
+  @Input()
+  public activeTab: boolean = false;
+
   constructor() {
   }
 
