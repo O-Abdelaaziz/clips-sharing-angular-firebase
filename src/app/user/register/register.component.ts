@@ -9,7 +9,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class RegisterComponent implements OnInit {
   public fullName = new FormControl('', [Validators.required, Validators.minLength(3)]);
   public email = new FormControl('', [Validators.required, Validators.email]);
-  public age = new FormControl('');
+  public age = new FormControl('',[Validators.required,Validators.min(18),Validators.max(50)]);
   public password = new FormControl('');
   public confirmPassword = new FormControl('');
   public phoneNumber = new FormControl('');

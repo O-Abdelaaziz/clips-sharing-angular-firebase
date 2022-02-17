@@ -14,4 +14,10 @@
   <p class="text-red-400" *ngIf=" control.errors?.['email']">
     You must enter a valid email.
   </p>
+  <p class="text-red-400" *ngIf=" control.errors?.['min']">
+    Value too low.
+  </p>
+  <p class="text-red-400" *ngIf=" control.errors?.['max']">
+    Value to High.
+  </p>
 </ng-container>
