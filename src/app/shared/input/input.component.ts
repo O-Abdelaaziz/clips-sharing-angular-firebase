@@ -14,6 +14,8 @@ export class InputComponent implements OnInit {
   public type: string = 'text';
   @Input()
   public placeHolder: string = '';
+  @Input()
+  public format = '';
 
   constructor() {
   }
