@@ -20,4 +20,10 @@
   <p class="text-red-400" *ngIf=" control.errors?.['max']">
     Value to High.
   </p>
+  <p class="text-red-400" *ngIf=" control.errors?.['pattern']">
+    Password must be at least: <br>
+    - 8 characters <br>
+    - least 1 uppercase letter, 1 lowercase letter, and 1 number <br>
+    - can contain special characters
+  </p>
 </ng-container>
