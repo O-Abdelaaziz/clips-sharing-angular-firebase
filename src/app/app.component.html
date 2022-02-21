@@ -249,6 +249,6 @@
 </section>
 
 <!-- Auth Modal -->
-<app-auth-modal></app-auth-modal>
+<app-auth-modal *ngIf="!(_authService.isAuthenticated$ | async)"></app-auth-modal>
 
 
