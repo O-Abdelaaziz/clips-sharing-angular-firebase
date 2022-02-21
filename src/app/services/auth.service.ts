@@ -41,6 +41,12 @@ export class AuthService {
 
     await userCredentials.user.updateProfile({
       displayName: userData.fullName
-    })
+    });
   }
 }
+
+//Update FireBase Rules
+// match /{document=**} {
+//   allow read: if true;
+//   allow write: if request.auth.uid != null;
+// }
