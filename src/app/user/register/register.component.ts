@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   public alertColor: string = 'blue';
   public alertContent: string = 'Please wait! Your account is being created.';
 
+  public inSubmission: boolean = false;
+
   constructor(private _angularFireAuth: AngularFireAuth) {
   }
 
@@ -37,8 +39,22 @@ export class RegisterComponent implements OnInit {
     this.showAlert = true;
     this.alertContent = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
+    this.inSubmission=true;
     const {email, password} = this.registerFromGroup.value;
-    const userCredentials = await this._angularFireAuth
-      .createUserWithEmailAndPassword(email, password);
+
+    try {
+      const userCredentials = await this._angularFireAuth
+        .createUserWithEmailAndPassword(email, password);
+      console.log(userCredentials);
+    } catch (e) {
+      console.error(e);
+      this.alertContent = "An unexpected error occurred. Please try again later."
+      this.alertColor = "red";
+      this.inSubmission=false;
+      return;
+    }
+
+    this.alertContent = "Success! Your account has been created";
+    this.alertColor = "green";
   }
 }
