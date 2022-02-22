@@ -1,15 +1,17 @@
-import {AbstractControl, ValidationErrors} from "@angular/forms";
+import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
 export class RegisterValidators {
 
-  static match(group: AbstractControl): ValidationErrors | null {
-    const control = group.get('password');
-    const matchingControl = group.get('confirmPassword');
+  static match(controlName: string, matchingControlName: string): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+      const control = group.get(controlName);
+      const matchingControl = group.get(matchingControlName);
 
-    if (!control || !matchingControl) {
-      return {controlNotFound: true};
+      if (!control || !matchingControl) {
+        return {controlNotFound: true};
+      }
+      const error = control.value === matchingControl.value ? null : {notMatch: true};
+      return error;
     }
-    const error = control.value === matchingControl.value ? null : {notMatch: true};
-    return error;
   }
 }

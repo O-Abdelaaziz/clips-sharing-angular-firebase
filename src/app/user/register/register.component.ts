@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     password: this.password,
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber
-  }, RegisterValidators.match);
+  }, RegisterValidators.match('password', 'confirmPassword'));
 
   public showAlert: boolean = false;
   public alertColor: string = 'blue';
