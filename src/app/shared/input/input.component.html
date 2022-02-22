@@ -26,4 +26,7 @@
     - least 1 uppercase letter, 1 lowercase letter, and 1 number <br>
     - can contain special characters
   </p>
+  <p class="text-red-400" *ngIf=" control.errors?.['notMatch']">
+    Password do not match.
+  </p>
 </ng-container>

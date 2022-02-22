@@ -11,6 +11,7 @@ export class RegisterValidators {
         return {controlNotFound: true};
       }
       const error = control.value === matchingControl.value ? null : {notMatch: true};
+      matchingControl.setErrors(error);
       return error;
     }
   }
