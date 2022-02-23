@@ -12,10 +12,10 @@
         </li>
         <ng-template #authenticatedLinks>
           <li>
-            <a class="px-2" href="javascript:void(0)" routerLink="/manage" routerLinkActive="text-indigo-400 font-bold">Manage</a>
+            <a class="px-2" href="javascript:void(0)" routerLink="/manage" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">Manage</a>
           </li>
           <li>
-            <a class="px-2" href="javascript:void(0)" routerLink="/upload" routerLinkActive="text-indigo-400 font-bold">Upload</a>
+            <a class="px-2" href="javascript:void(0)" routerLink="/upload" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">Upload</a>
           </li>
           <li>
             <a class="px-2" href="javascript:void(0)" (click)="onLogout($event)">logout</a>
