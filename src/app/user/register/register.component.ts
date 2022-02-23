@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {RegisterValidators} from "../validators/register-validators";
+import {EmailTaken} from "../validators/email-taken";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import {RegisterValidators} from "../validators/register-validators";
 })
 export class RegisterComponent implements OnInit {
   public fullName = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  public email = new FormControl('', [Validators.required, Validators.email]);
+  public email = new FormControl('', [Validators.required, Validators.email],[this._emailTaken.validate]);
   public age = new FormControl('', [Validators.required, Validators.min(18), Validators.max(50)]);
   public password = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
   public confirmPassword = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _authService: AuthService,
+    private _emailTaken: EmailTaken,
   ) {
   }
 
