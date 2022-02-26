@@ -16,8 +16,6 @@ const routes: Routes = [
   {
     path: 'manage-clips',
     redirectTo: 'manage',
-    canActivate: [AngularFireAuthGuard],
-    data: {authOnly: true, authGuardPipe: redirectUnauthorizedToHome}
   },
   {
     path: 'upload',
