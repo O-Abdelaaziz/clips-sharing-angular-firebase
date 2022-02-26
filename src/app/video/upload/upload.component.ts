@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class UploadComponent implements OnInit {
   public isHovering: boolean = false;
   public file: File | null = null;
+  public nextStep: boolean = false;
 
   constructor() {
   }
@@ -21,6 +22,7 @@ export class UploadComponent implements OnInit {
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
+    this.nextStep = true;
     console.log(this.file)
   }
 }
