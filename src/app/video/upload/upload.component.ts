@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-upload',
@@ -9,6 +10,10 @@ export class UploadComponent implements OnInit {
   public isHovering: boolean = false;
   public file: File | null = null;
   public nextStep: boolean = false;
+  public title: FormControl = new FormControl('');
+  public uploadFormGroup: FormGroup = new FormGroup({
+    title: this.title,
+  });
 
   constructor() {
   }
@@ -23,6 +28,11 @@ export class UploadComponent implements OnInit {
       return;
     }
     this.nextStep = true;
-    console.log(this.file)
+    this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
+    console.log(this.title)
+  }
+
+  onUploadFile(){
+
   }
 }
