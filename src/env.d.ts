@@ -1,3 +1,4 @@
+// @ts-ignore
 declare var process: {
   env: {
     NG_APP_ENV: string;

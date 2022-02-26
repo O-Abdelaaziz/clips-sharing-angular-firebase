@@ -6,6 +6,7 @@ import {ManageComponent} from './manage/manage.component';
 import {UploadComponent} from './upload/upload.component';
 import {SharedModule} from "../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     VideoRoutingModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
     SharedModule
   ]
 })
