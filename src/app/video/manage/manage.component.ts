@@ -16,15 +16,23 @@ export class ManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParamMap.subscribe(
-      (params: Params) => {
-        this.videoOrder = params['sort'] === 2 ? params['sort'] : '1';
-      }
-    )
+    this._activatedRoute.queryParamMap
+      .subscribe(
+        (response: Params) => {
+          const params = response['params']
+          this.videoOrder = params['sort'] === '2' ? params['sort'] : '1';
+        }
+      )
   }
 
   onSortItems(event: Event) {
     const {value} = (event.target as HTMLSelectElement);
-    this._router.navigateByUrl(`/manage?sort=${value}`);
+    // this._router.navigateByUrl(`/manage?sort=${value}`);
+    this._router.navigate([], {
+      relativeTo: this._activatedRoute,
+      queryParams: {
+        sort: value
+      }
+    })
   }
 }
