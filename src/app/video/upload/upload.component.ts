@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {last} from 'rxjs/operators';
+import {last, switchMap} from 'rxjs/operators';
+import {AngularFireAuth} from "@angular/fire/compat/auth";
+import firebase from "firebase/compat/app";
 
 @Component({
   selector: 'app-upload',
@@ -24,7 +26,17 @@ export class UploadComponent implements OnInit {
   public showProgress: boolean = false;
   public percentage: number = 0;
 
-  constructor(private _angularFireStorage: AngularFireStorage) {
+  public user: firebase.User | null = null;
+
+  constructor(
+    private _angularFireStorage: AngularFireStorage,
+    private _angularFireAuth: AngularFireAuth,
+  ) {
+    _angularFireAuth.user.subscribe(
+      (user) => {
+        this.user = user;
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -50,16 +62,25 @@ export class UploadComponent implements OnInit {
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
     const task = this._angularFireStorage.upload(clipPath, this.file);
+    const clipReference = this._angularFireStorage.ref(clipPath);
     task.percentageChanges().subscribe(
       (progress) => {
         this.percentage = progress as number / 100;
       }
     );
     task.snapshotChanges().pipe(
-      last()
+      last(),
+      switchMap(() => clipReference.getDownloadURL())
     ).subscribe(
       {
-        next: (snapshot) => {
+        next: (url) => {
+          const clip = {
+            uid: this.user?.uid,
+            displayName: this.user?.displayName,
+            title: this.title.value,
+            fileName: `${clipFileName}.mp4`,
+            clipUrl:url
+          }
           this.alertColor = 'green';
           this.alertContent = 'Success! Your clip is now ready to share with the world.';
           this.showProgress = false;
