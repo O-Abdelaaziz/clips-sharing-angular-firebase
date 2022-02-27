@@ -16,6 +16,11 @@ export class UploadComponent implements OnInit {
     title: this.title,
   });
 
+  public showAlert: boolean = false;
+  public alertColor: string = 'blue';
+  public alertContent: string = 'Please wait! Your clip is being uploaded...';
+  public inSubmission: boolean = false;
+
   constructor(private _angularFireStorage: AngularFireStorage) {
   }
 
@@ -34,6 +39,10 @@ export class UploadComponent implements OnInit {
   }
 
   onUploadFile() {
+    this.showAlert = true;
+    this.alertColor = 'blue';
+    this.alertContent = 'Please wait! Your clip is being uploaded...';
+    this.inSubmission = true;
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
     this._angularFireStorage.upload(clipPath, this.file);
@@ -46,7 +55,7 @@ export class UploadComponent implements OnInit {
    */
   getUniqueId(parts: number): string {
     const stringArr = [];
-    for(let i = 0; i< parts; i++){
+    for (let i = 0; i < parts; i++) {
       // tslint:disable-next-line:no-bitwise
       const S4 = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
       stringArr.push(S4);
