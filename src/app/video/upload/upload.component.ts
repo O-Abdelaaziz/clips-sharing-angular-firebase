@@ -20,6 +20,7 @@ export class UploadComponent implements OnInit {
   public alertColor: string = 'blue';
   public alertContent: string = 'Please wait! Your clip is being uploaded...';
   public inSubmission: boolean = false;
+  public percentage: number = 0;
 
   constructor(private _angularFireStorage: AngularFireStorage) {
   }
@@ -45,7 +46,12 @@ export class UploadComponent implements OnInit {
     this.inSubmission = true;
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
-    this._angularFireStorage.upload(clipPath, this.file);
+    const task = this._angularFireStorage.upload(clipPath, this.file);
+    task.percentageChanges().subscribe(
+      (progress) => {
+        this.percentage = progress as number / 100;
+      }
+    );
   }
 
   /**

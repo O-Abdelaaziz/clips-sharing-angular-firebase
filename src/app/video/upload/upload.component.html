@@ -2,7 +2,6 @@
 <section class="container mx-auto my-8 bg-secondary p-6">
   <div class="rounded relative flex flex-col">
     <div class="font-bold mb-6">Upload Video</div>
-
     <!-- Upload Dropbox -->
     <div app-event-blocker *ngIf="!nextStep; else uploadForm"
          (dragend)="isHovering = false"
@@ -23,6 +22,9 @@
       <app-alert [color]="alertColor" *ngIf="showAlert">
         {{alertContent}}
       </app-alert>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-2" *ngIf="showAlert">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" [style.width]="percentage | percent">{{percentage | percent}}</div>
+      </div>
       <!-- Form -->
       <form [formGroup]="uploadFormGroup" (ngSubmit)="onUploadFile()">
         <!-- Screenshots -->
