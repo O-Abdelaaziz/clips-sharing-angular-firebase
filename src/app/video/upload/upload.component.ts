@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {last} from 'rxjs/operators';
 
 @Component({
   selector: 'app-upload',
@@ -20,6 +21,7 @@ export class UploadComponent implements OnInit {
   public alertColor: string = 'blue';
   public alertContent: string = 'Please wait! Your clip is being uploaded...';
   public inSubmission: boolean = false;
+  public showProgress: boolean = false;
   public percentage: number = 0;
 
   constructor(private _angularFireStorage: AngularFireStorage) {
@@ -41,6 +43,7 @@ export class UploadComponent implements OnInit {
 
   onUploadFile() {
     this.showAlert = true;
+    this.showProgress = true;
     this.alertColor = 'blue';
     this.alertContent = 'Please wait! Your clip is being uploaded...';
     this.inSubmission = true;
@@ -50,6 +53,23 @@ export class UploadComponent implements OnInit {
     task.percentageChanges().subscribe(
       (progress) => {
         this.percentage = progress as number / 100;
+      }
+    );
+    task.snapshotChanges().pipe(
+      last()
+    ).subscribe(
+      {
+        next: (snapshot) => {
+          this.alertColor = 'green';
+          this.alertContent = 'Success! Your clip is now ready to share with the world.';
+          this.showProgress = false;
+        },
+        error: (error) => {
+          this.alertColor = 'red';
+          this.alertContent = 'Upload Failed! Please try again later.';
+          this.inSubmission = true;
+          this.showProgress = false;
+        }
       }
     );
   }
