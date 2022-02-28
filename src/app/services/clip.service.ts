@@ -23,12 +23,6 @@ export class ClipService {
     this.clipsCollections = this._angularFirestore.collection('clips');
   }
 
-  createClip(data: IClip): Promise<DocumentReference<IClip>> {
-    // set allow you to set a custom uid for your document.
-    // add will instruct firebase to generate auto uid fro your document
-    return this.clipsCollections.add(data);
-  }
-
   getUserClips() {
     return this._angularFireAuth.user.pipe(
       switchMap(user => {
@@ -40,6 +34,16 @@ export class ClipService {
       }),
       map(snapshot => (snapshot as QuerySnapshot<IClip>).docs)
     );
+  }
+
+  createClip(data: IClip): Promise<DocumentReference<IClip>> {
+    // set allow you to set a custom uid for your document.
+    // add will instruct firebase to generate auto uid fro your document
+    return this.clipsCollections.add(data);
+  }
+
+  updateClip(id: string, title: string) {
+    return this.clipsCollections.doc(id).update({title});
   }
 
 
