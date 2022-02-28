@@ -12,6 +12,7 @@ import {ModalService} from "../../services/modal.service";
 export class ManageComponent implements OnInit {
   public videoOrder: string = '1';
   public clips: IClip[] = [];
+  public activeClip: IClip | null = null;
 
   constructor(
     private _clipService: ClipService,
@@ -61,6 +62,7 @@ export class ManageComponent implements OnInit {
 
   openEditModal($event: Event, clip: IClip) {
     $event.preventDefault();
+    this.activeClip = clip;
     this._modalService.toggleModal('editClip');
 
   }
