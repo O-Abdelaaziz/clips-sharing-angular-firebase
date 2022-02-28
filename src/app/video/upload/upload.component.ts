@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {last, switchMap} from 'rxjs/operators';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from "firebase/compat/app";
@@ -12,7 +12,7 @@ import IClip from "../../models/clip";
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnDestroy {
   public isHovering: boolean = false;
   public file: File | null = null;
   public nextStep: boolean = false;
@@ -29,6 +29,7 @@ export class UploadComponent implements OnInit {
   public percentage: number = 0;
 
   public user: firebase.User | null = null;
+  public task?: AngularFireUploadTask;
 
   constructor(
     private _angularFireStorage: AngularFireStorage,
@@ -42,7 +43,8 @@ export class UploadComponent implements OnInit {
     )
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.task?.cancel();
   }
 
   onStoreFile(event: Event) {
@@ -67,14 +69,14 @@ export class UploadComponent implements OnInit {
     this.inSubmission = true;
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
-    const task = this._angularFireStorage.upload(clipPath, this.file);
+    this.task = this._angularFireStorage.upload(clipPath, this.file);
     const clipReference = this._angularFireStorage.ref(clipPath);
-    task.percentageChanges().subscribe(
+    this.task.percentageChanges().subscribe(
       (progress) => {
         this.percentage = progress as number / 100;
       }
     );
-    task.snapshotChanges().pipe(
+    this.task.snapshotChanges().pipe(
       last(),
       switchMap(() => clipReference.getDownloadURL())
     ).subscribe(
