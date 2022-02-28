@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {last, switchMap} from 'rxjs/operators';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
@@ -17,7 +17,7 @@ export class UploadComponent implements OnDestroy {
   public isHovering: boolean = false;
   public file: File | null = null;
   public nextStep: boolean = false;
-  public title: FormControl = new FormControl('');
+  public title: FormControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
   public uploadFormGroup: FormGroup = new FormGroup({
     title: this.title,
   });
