@@ -57,6 +57,7 @@ export class UploadComponent implements OnInit {
   }
 
   onUploadFile() {
+    this.uploadFormGroup.disable();
     this.showAlert = true;
     this.showProgress = true;
     this.alertColor = 'blue';
@@ -90,6 +91,7 @@ export class UploadComponent implements OnInit {
           this.showProgress = false;
         },
         error: (error) => {
+          this.uploadFormGroup.enable();
           this.alertColor = 'red';
           this.alertContent = 'Upload Failed! Please try again later.';
           this.inSubmission = true;
