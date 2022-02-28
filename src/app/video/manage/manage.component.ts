@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ClipService} from "../../services/clip.service";
 import IClip from "../../models/clip";
 import {ModalService} from "../../services/modal.service";
+import {of, BehaviorSubject, combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-manage',
@@ -13,6 +14,7 @@ export class ManageComponent implements OnInit {
   public videoOrder: string = '1';
   public clips: IClip[] = [];
   public activeClip: IClip | null = null;
+  public sort$: BehaviorSubject<string>;
 
   constructor(
     private _clipService: ClipService,
@@ -20,6 +22,7 @@ export class ManageComponent implements OnInit {
     private _router: Router,
     private _activatedRoute: ActivatedRoute
   ) {
+    this.sort$ = new BehaviorSubject<string>(this.videoOrder);
   }
 
   ngOnInit(): void {
@@ -28,6 +31,7 @@ export class ManageComponent implements OnInit {
         (response: Params) => {
           const params = response['params']
           this.videoOrder = params['sort'] === '2' ? params['sort'] : '1';
+          this.sort$.next(this.videoOrder);
         }
       );
 
@@ -35,7 +39,7 @@ export class ManageComponent implements OnInit {
   }
 
   onGetCLips() {
-    this._clipService.getUserClips().subscribe(
+    this._clipService.getUserClips(this.sort$).subscribe(
       (docs) => {
         this.clips = [];
         docs.forEach(doc => {
@@ -58,7 +62,6 @@ export class ManageComponent implements OnInit {
       }
     })
   }
-
 
   openEditModal($event: Event, clip: IClip) {
     $event.preventDefault();
