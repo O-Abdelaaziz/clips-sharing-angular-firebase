@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ClipService} from "../../services/clip.service";
+import IClip from "../../models/clip";
 
 @Component({
   selector: 'app-manage',
@@ -7,9 +9,10 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   styleUrls: ['./manage.component.css']
 })
 export class ManageComponent implements OnInit {
-  videoOrder: string = '1';
+  public videoOrder: string = '1';
 
   constructor(
+    private _clipService: ClipService,
     private _router: Router,
     private _activatedRoute: ActivatedRoute
   ) {
