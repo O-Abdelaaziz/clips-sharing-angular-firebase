@@ -10,6 +10,7 @@ import IClip from "../../models/clip";
 })
 export class ManageComponent implements OnInit {
   public videoOrder: string = '1';
+  public clips: IClip[] = [];
 
   constructor(
     private _clipService: ClipService,
@@ -25,7 +26,23 @@ export class ManageComponent implements OnInit {
           const params = response['params']
           this.videoOrder = params['sort'] === '2' ? params['sort'] : '1';
         }
-      )
+      );
+
+    this.onGetCLips();
+  }
+
+  onGetCLips() {
+    this._clipService.getUserClips().subscribe(
+      (docs) => {
+        this.clips = [];
+        docs.forEach(doc => {
+          this.clips.push({
+            docId: doc.id,
+            ...doc.data()
+          });
+        })
+      }
+    )
   }
 
   onSortItems(event: Event) {
