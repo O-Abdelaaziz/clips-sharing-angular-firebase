@@ -6,6 +6,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from "firebase/compat/app";
 import {ClipService} from "../../services/clip.service";
 import IClip from "../../models/clip";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-upload',
@@ -35,6 +36,7 @@ export class UploadComponent implements OnDestroy {
     private _angularFireStorage: AngularFireStorage,
     private _angularFireAuth: AngularFireAuth,
     private _clipService: ClipService,
+    private _router: Router,
   ) {
     _angularFireAuth.user.subscribe(
       (user) => {
@@ -81,7 +83,7 @@ export class UploadComponent implements OnDestroy {
       switchMap(() => clipReference.getDownloadURL())
     ).subscribe(
       {
-        next: (url) => {
+        next: async (url) => {
           const clip = {
             uid: this.user?.uid as string,
             displayName: this.user?.displayName as string,
@@ -89,10 +91,13 @@ export class UploadComponent implements OnDestroy {
             fileName: `${clipFileName}.mp4`,
             clipUrl: url
           }
-          this._clipService.createClip(clip);
+          const clipDocumentRef = await this._clipService.createClip(clip);
           this.alertColor = 'green';
           this.alertContent = 'Success! Your clip is now ready to share with the world.';
           this.showProgress = false;
+          setTimeout(() => {
+            this._router.navigate(['/clip', clipDocumentRef.id]);
+          }, 1000)
         },
         error: (error) => {
           this.uploadFormGroup.enable();
