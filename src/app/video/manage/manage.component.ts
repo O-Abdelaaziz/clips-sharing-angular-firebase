@@ -90,4 +90,5 @@ export class ManageComponent implements OnInit {
 
   }
   // create index from firebase
+  //installing ffmpeg
 }
