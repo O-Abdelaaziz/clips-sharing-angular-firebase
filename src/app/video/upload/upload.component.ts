@@ -2,10 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {last, switchMap} from 'rxjs/operators';
+import {combineLatest} from 'rxjs';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from "firebase/compat/app";
 import {ClipService} from "../../services/clip.service";
-import IClip from "../../models/clip";
 import {Router} from "@angular/router";
 import {FfmpegService} from "../../services/ffmpeg.service";
 
@@ -91,11 +91,21 @@ export class UploadComponent implements OnDestroy {
 
     this.screenshotTask = this._angularFireStorage.upload(screenshotPath, screenshotBlob);
 
-    this.task.percentageChanges().subscribe(
+    combineLatest(
+      [this.task.percentageChanges(),
+        this.screenshotTask.percentageChanges()
+      ]).subscribe(
       (progress) => {
-        this.percentage = progress as number / 100;
+        const [clipProgress, screenshotProgress] = progress;
+
+        if (!clipProgress || !screenshotProgress) {
+          return;
+        }
+        const total = clipProgress + screenshotProgress;
+        this.percentage = total as number / 200;
       }
     );
+
     this.task.snapshotChanges().pipe(
       last(),
       switchMap(() => clipReference.getDownloadURL())
