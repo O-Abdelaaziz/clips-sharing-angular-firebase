@@ -32,6 +32,7 @@ export class UploadComponent implements OnDestroy {
 
   public user: firebase.User | null = null;
   public task?: AngularFireUploadTask;
+  public screenshots: string[] = [];
 
   constructor(
     private _angularFireStorage: AngularFireStorage,
@@ -58,7 +59,7 @@ export class UploadComponent implements OnDestroy {
       return;
     }
 
-    await  this._ffmpegService.getScreenshots(this.file);
+    this.screenshots = await this._ffmpegService.getScreenshots(this.file);
 
     this.nextStep = true;
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
