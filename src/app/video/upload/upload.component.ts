@@ -34,6 +34,8 @@ export class UploadComponent implements OnDestroy {
   public task?: AngularFireUploadTask;
   public screenshots: string[] = [];
   public selectedScreenshots: string = '';
+  public screenshotTask?: AngularFireUploadTask;
+
 
   constructor(
     private _angularFireStorage: AngularFireStorage,
@@ -71,7 +73,7 @@ export class UploadComponent implements OnDestroy {
     console.log(this.title)
   }
 
-  onUploadFile() {
+  async onUploadFile() {
     this.uploadFormGroup.disable();
     this.showAlert = true;
     this.showProgress = true;
@@ -80,8 +82,15 @@ export class UploadComponent implements OnDestroy {
     this.inSubmission = true;
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
+
+    const screenshotBlob = await this._ffmpegService.blobFromUrl(this.selectedScreenshots);
+    const screenshotPath = `screenshots/${clipFileName}.png`;
+
     this.task = this._angularFireStorage.upload(clipPath, this.file);
     const clipReference = this._angularFireStorage.ref(clipPath);
+
+    this.screenshotTask = this._angularFireStorage.upload(screenshotPath, screenshotBlob);
+
     this.task.percentageChanges().subscribe(
       (progress) => {
         this.percentage = progress as number / 100;
@@ -138,6 +147,7 @@ export class UploadComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.task?.cancel();
   }
+
   //Updating_the_Firebase_Storage_Rules
   //request.resource.contentType == 'video/mp4' || request.resource.contentType == 'image/png'
 }
