@@ -138,4 +138,6 @@ export class UploadComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.task?.cancel();
   }
+  //Updating_the_Firebase_Storage_Rules
+  //request.resource.contentType == 'video/mp4' || request.resource.contentType == 'image/png'
 }
