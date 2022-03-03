@@ -49,7 +49,7 @@ export class UploadComponent implements OnDestroy {
   }
 
 
-  onStoreFile(event: Event) {
+  async onStoreFile(event: Event) {
     this.isHovering = false
     this.file = (event as DragEvent).dataTransfer ?
       (event as DragEvent).dataTransfer?.files.item(0) ?? null :
@@ -57,6 +57,9 @@ export class UploadComponent implements OnDestroy {
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
+
+    await  this._ffmpegService.getScreenshots(this.file);
+
     this.nextStep = true;
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     console.log(this.title)
