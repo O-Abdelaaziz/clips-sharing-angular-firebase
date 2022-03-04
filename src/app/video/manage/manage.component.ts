@@ -3,7 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ClipService} from "../../services/clip.service";
 import IClip from "../../models/clip";
 import {ModalService} from "../../services/modal.service";
-import {of, BehaviorSubject, combineLatest} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-manage',
@@ -89,6 +89,13 @@ export class ManageComponent implements OnInit {
     })
 
   }
-  // create index from firebase
-  //installing ffmpeg
+
+  async onCopyToClipboard($event: Event, docId: string | undefined) {
+    $event.preventDefault();
+    if (!docId) {
+      return;
+    }
+    const url = `${location.origin}/clip/${docId}`;
+    await navigator.clipboard.writeText(url);
+  }
 }
