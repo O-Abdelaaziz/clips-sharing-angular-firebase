@@ -5,19 +5,56 @@
   "navbar.upload": "Upload",
   "navbar.logout": "Logout",
   "navbar.about": "About",
+
   "home.welcomeMessage.title": "CLIP IT AND SHIP IT!",
   "home.welcomeMessage.description": "The #1 app to watch, clip, and share your awesome gaming moments with your friends and the world! With our world-class tools, we make it incredibly easy to share your videos. Get started today!",
   "home.section.name":"Latest",
-  "login.modal.title": "Your Account",
+
+  "modal.title": "Your Account",
+
   "login.modal.label": "Login",
+
   "login.email.label": "Email",
   "login.email.placeholder": "Enter Email",
-  "login.email.validation": "You must enter a valid email.",
+
   "login.password.label": "Password",
   "login.password.placeholder": "Enter Password",
-  "login.password.validation": "Password must be at least:\n    - 8 characters.\n    - least 1 uppercase letter, 1 lowercase letter, and 1 number.\n    - can contain special characters.",
-  "login.alert.default.text": "Please wait! Your account is being created.",
-  "login.alert.success.text": "Success! Your has been connected successfully."
 
+  "login.alert.default.text": "Please wait! Your account is being created.",
+  "login.alert.success.text": "Success! Your has been connected successfully.",
+  "login.alert.error.text": "An unexpected error occurred. Please try again later.",
+
+  "register.modal.label": "Register",
+
+  "register.fullName.label": "Full Name",
+  "register.fullName.placeholder": "Enter Full Name",
+
+  "register.age.label": "Age",
+  "register.age.placeholder": "Enter Age",
+
+  "register.email.label": "Email",
+  "register.email.placeholder": "Enter Email",
+
+  "register.password.label": "Password",
+  "register.password.placeholder": "Enter Password",
+
+  "register.confirmPassword.label": "Password",
+  "register.confirmPassword.placeholder": "Enter Password",
+
+  "register.phoneNumber.label": "Phone Number",
+  "register.phoneNumber.placeholder": "Enter Phone Number",
+
+  "register.alert.default.text": "Please wait! Your account is being created.",
+  "register.alert.success.text": "Success! Your account has been created",
+  "register.alert.error.text": "An unexpected error occurred. Please try again later.",
+
+  "validation.required": "Field is required.",
+  "validation.minlength": "The value you inputted is {{actualLength}} characters long. It must be at least {{requiredLength}} characters long.",
+  "validation.email": "You must enter a valid email.",
+  "validation.emailTaken": "Email taken. Please try another email.",
+  "validation.min": "Value too low.",
+  "validation.max": "Value to High.",
+  "validation.pattern": "Password must be at least:\n    - 8 characters.\n    - least 1 uppercase letter, 1 lowercase letter, and 1 number.\n    - can contain special characters.",
+  "validation.notMatch": "Password do not match."
 }
 

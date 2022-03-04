@@ -5,28 +5,27 @@
 />
 <ng-container *ngIf="control.touched || control.dirty">
   <p class="text-red-400" *ngIf=" control.errors?.['required']">
-    Field is required.
+   {{'validation.required' | translate}}
   </p>
-  <p class="text-red-400" *ngIf="control.errors?.['minlength']">
-    The value you inputted is {{control.errors?.['minlength'].actualLength}} characters long.<br>
-    It must be at least {{control.errors?.['minlength']?.requiredLength}} characters long.
+  <p class="text-red-400" *ngIf="control.errors?.['minlength']"
+     [translate]="'validation.minlength'" [translateParams]="{actualLength: control.errors?.['minlength']?.actualLength,requiredLength:control.errors?.['minlength']?.requiredLength}">
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['email']">
-    {{'login.email.validation' | translate}}
+    {{'validation.email' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['emailTaken']">
-    Email taken. Please try another email.
+    {{'validation.emailTaken' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['min']">
-    Value too low.
+    {{'validation.min' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['max']">
-    Value to High.
+    {{'validation.max' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['pattern']">
-    {{'login.password.validation' | translate}}
+    {{'validation.pattern' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['notMatch']">
-    Password do not match.
+    {{'validation.notMatch' | translate}}
   </p>
 </ng-container>

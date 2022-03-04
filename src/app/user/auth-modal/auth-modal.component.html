@@ -1,13 +1,13 @@
 <app-modal modalId="auth">
 
-  <p class="text-2xl font-bold" heading>{{'login.modal.title' | translate}}</p>
+  <p class="text-2xl font-bold" heading>{{'modal.title' | translate}}</p>
 
   <app-tabs-container>
     <app-tab [titleTab] ="'login.modal.label' | translate">
       <!-- Login Form -->
       <app-login></app-login>
     </app-tab>
-    <app-tab titleTab ="Register">
+    <app-tab [titleTab] ="'register.modal.label' | translate">
       <!-- Registration Form -->
       <app-register></app-register>
     </app-tab>

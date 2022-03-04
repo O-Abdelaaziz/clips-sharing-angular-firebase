@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
       );
     } catch (e) {
       this.inSubmission = false;
-
+      console.log(e)
+      this.alertContent = this._translateService.instant('login.alert.error.text');
     }
     this.alertContent = this._translateService.instant('login.alert.success.text');
 

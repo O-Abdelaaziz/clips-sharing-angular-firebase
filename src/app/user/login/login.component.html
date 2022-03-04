@@ -16,7 +16,7 @@
                     duration-500 focus:outline-none rounded bg-transparent
                     focus:border-indigo-400"
       [placeholder]="'login.email.placeholder'| translate"/>
-    <p class="text-red-500" *ngIf="email.errors && email.touched && email.dirty">{{'login.email.validation' | translate}}</p>
+    <p class="text-red-500" *ngIf="email.errors && email.touched && email.dirty">{{'validation.email' | translate}}</p>
   </div>
   <!-- Password -->
   <div class="mb-3">
@@ -31,7 +31,7 @@
            class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
                   duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
            [placeholder]="'login.password.placeholder' | translate"/>
-    <p class="text-red-500" *ngIf="password.errors && password.touched && password.dirty">{{'login.password.validation' | translate}}</p>
+    <p class="text-red-500" *ngIf="password.errors && password.touched && password.dirty">{{'validation.password' | translate}}</p>
   </div>
   <button type="submit" [disabled]="loginForm.invalid || inSubmission"
           class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition

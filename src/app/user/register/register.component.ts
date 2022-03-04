@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {RegisterValidators} from "../validators/register-validators";
 import {EmailTaken} from "../validators/email-taken";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register',
@@ -27,13 +28,14 @@ export class RegisterComponent implements OnInit {
 
   public showAlert: boolean = false;
   public alertColor: string = 'blue';
-  public alertContent: string = 'Please wait! Your account is being created.';
+  public alertContent: string = '';
 
   public inSubmission: boolean = false;
 
   constructor(
     private _authService: AuthService,
     private _emailTaken: EmailTaken,
+    private _translateService: TranslateService
   ) {
   }
 
@@ -42,6 +44,7 @@ export class RegisterComponent implements OnInit {
 
   async onRegister() {
     this.showAlert = true;
+    this.alertContent = this._translateService.instant('register.alert.default.text');
     this.alertContent = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
     this.inSubmission = true;
@@ -50,13 +53,13 @@ export class RegisterComponent implements OnInit {
       await this._authService.createUser(this.registerFromGroup.value);
     } catch (e) {
       console.error(e);
-      this.alertContent = "An unexpected error occurred. Please try again later."
+      this.alertContent = this._translateService.instant('register.alert.error.text');
       this.alertColor = "red";
       this.inSubmission = false;
       return;
     }
 
-    this.alertContent = "Success! Your account has been created";
+    this.alertContent = this._translateService.instant('register.alert.success.text');
     this.alertColor = "green";
   }
 }

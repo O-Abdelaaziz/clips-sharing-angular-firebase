@@ -5,18 +5,55 @@
   "navbar.upload": "Télécharger",
   "navbar.logout": "Se déconnecter",
   "navbar.about": "Apropos",
+
   "home.welcomeMessage.title": "CLIPEZ-LE ET EXPÉDEZ-LE !s",
   "home.welcomeMessage.description": "L'application n°1 pour regarder, filmer et partager vos super moments de jeu avec vos amis et le monde ! Grâce à nos outils de classe mondiale, nous facilitons incroyablement le partage de vos vidéos. Commencer aujourd'hui!",
   "home.section.name":"Dernier",
-  "login.modal.title": "Votre compte",
+
+  "modal.title": "Votre compte",
+
   "login.modal.label": "Connexion",
+
   "login.email.label": "E-mail",
   "login.email.placeholder": "Entrez l'e-mail",
-  "login.email.validation": "Vous devez entrer un email valide.",
+
   "login.password.label": "Mot de passe",
   "login.password.placeholder": "Entrer le mot de passe",
-  "login.password.validation": "Le mot de passe doit être au moins : <br>\n     - 8 caractères. <br>\n     - au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre. <br>\n     - peut contenir des caractères spéciaux.",
-  "login.alert.default.text": "S'il vous plaît, attendez! nous vous connectons...",
-  "login.alert.success.text": "Succès! Votre a été connecté avec succès."
 
+  "login.alert.default.text": "S'il vous plaît, attendez! nous vous connectons...",
+  "login.alert.success.text": "Succès! Votre a été connecté avec succès.",
+  "login.error.success.text": "Une erreur inattendue est apparue. Veuillez réessayer plus tard.",
+
+  "register.modal.label": "S'inscrire",
+
+  "register.fullName.label": "Nom et prénom",
+  "register.fullName.placeholder": "Entrez le nom complet",
+
+  "register.age.label": "Age",
+  "register.age.placeholder": "Entrez l'âge",
+
+  "register.email.label": "E-mail",
+  "register.email.placeholder": "Entrez l'e-mail",
+
+  "register.password.label": "Mot de passe",
+  "register.password.placeholder": "Entrer le mot de passe",
+
+  "register.confirmPassword.label": "Confirmez le mot de passe",
+  "register.confirmPassword.placeholder": "Entrez Confirmer le mot de passe",
+
+  "register.phoneNumber.label": "Numéro de téléphone",
+  "register.phoneNumber.placeholder": "Entrez le numéro de téléphone",
+
+  "register.alert.default.text": "S'il vous plaît, attendez! Votre compte est en cours de création.",
+  "register.alert.success.text": "Succès! Votre compte a été créé.",
+  "register.alert.error.text": "Une erreur inattendue est apparue. Veuillez réessayer plus tard.",
+
+  "validation.required": "Champ requis.",
+  "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
+  "validation.email": "Vous devez entrer un email valide.",
+  "validation.emailTaken": "E-mail pris. Veuillez essayer un autre e-mail.",
+  "validation.min": "Valeur trop faible.",
+  "validation.max": "Valeur à Élevé.",
+  "validation.pattern": "Le mot de passe doit être au moins :\n     - 8 caractères.\n     - au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre.\n     - peut contenir des caractères spéciaux.",
+  "validation.notMatch": "Le mot de passe ne correspond pas."
 }
