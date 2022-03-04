@@ -73,6 +73,8 @@
 
   "clipsList.content.not.available": "Aucun extrait disponible",
 
+  "about.section.content": "Il s'agit d'une page à propos de base pour démontrer les capacités de routage de base.",
+
   "validation.required": "Champ requis.",
   "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
   "validation.email": "Vous devez entrer un email valide.",

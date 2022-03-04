@@ -73,6 +73,8 @@
 
   "clipsList.content.not.available": "No clips available\n",
 
+  "about.section.content": "This is a basic about page to demonstrate basic routing capabilities.",
+
   "validation.required": "Field is required.",
   "validation.minlength": "The value you inputted is {{actualLength}} characters long. It must be at least {{requiredLength}} characters long.",
   "validation.email": "You must enter a valid email.",
