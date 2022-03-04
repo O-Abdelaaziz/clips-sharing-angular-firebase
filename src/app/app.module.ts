@@ -11,7 +11,6 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
-import {VideoModule} from "./video/video.module";
 import {ClipComponent} from './clip/clip.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ClipsListComponent} from './clips-list/clips-list.component';
@@ -37,7 +36,6 @@ import {customNotifierOption} from "./config/customNotifierOption";
     AngularFireAuthModule,
     AngularFirestoreModule,
     UserModule,
-    VideoModule,
     SharedModule,
     AppRoutingModule,
     NotifierModule.withConfig(customNotifierOption),
