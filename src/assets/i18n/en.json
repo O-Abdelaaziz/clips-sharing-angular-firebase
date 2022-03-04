@@ -68,6 +68,9 @@
   "upload.video.success.text": "Success! Your clip is now ready to share with the world.",
   "upload.video.error.text": "Upload Failed! Please try again later.",
 
+  "clip.uploader.name": "Uploaded By {{displayName}} on\n",
+  "clip.more.clips": "More Clips\n",
+
   "validation.required": "Field is required.",
   "validation.minlength": "The value you inputted is {{actualLength}} characters long. It must be at least {{requiredLength}} characters long.",
   "validation.email": "You must enter a valid email.",

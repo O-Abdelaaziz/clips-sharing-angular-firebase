@@ -68,6 +68,9 @@
   "upload.video.success.text": "Succès! Votre clip est maintenant prêt à être partagé avec le monde.",
   "upload.video.error.text": "Le téléchargement a échoué ! Veuillez réessayer plus tard.",
 
+  "clip.uploader.name": "Téléchargé par {{displayName}} le \n",
+  "clip.more.clips": "Plus de clips",
+
   "validation.required": "Champ requis.",
   "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
   "validation.email": "Vous devez entrer un email valide.",
