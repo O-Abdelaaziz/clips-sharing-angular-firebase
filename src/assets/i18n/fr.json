@@ -58,6 +58,16 @@
   "manage.alert.success.text": "Succès! votre clip a été mis à jour avec succès.",
   "manage.alert.error.text": "Quelque chose s'est mal passé. Réessayez plus tard",
 
+  "upload.video.title": "Télécharger une video",
+  "upload.video.input.dragDrop": "Déposez votre fichier ici (mp4 uniquement !)",
+  "upload.video.input.thumbnail": "Sélectionnez une vignette",
+  "upload.video.input.label": "Titre",
+  "upload.video.input.placeHolder": "Entrez le titre",
+  "upload.video.form.submitButton": "Publier",
+  "upload.video.default.text": "S'il vous plaît, attendez! Votre clip est en cours de téléchargement...",
+  "upload.video.success.text": "Succès! Votre clip est maintenant prêt à être partagé avec le monde.",
+  "upload.video.error.text": "Le téléchargement a échoué ! Veuillez réessayer plus tard.",
+
   "validation.required": "Champ requis.",
   "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
   "validation.email": "Vous devez entrer un email valide.",

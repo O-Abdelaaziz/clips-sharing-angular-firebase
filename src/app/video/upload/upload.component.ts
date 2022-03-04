@@ -8,6 +8,7 @@ import firebase from "firebase/compat/app";
 import {ClipService} from "../../services/clip.service";
 import {Router} from "@angular/router";
 import {FfmpegService} from "../../services/ffmpeg.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-upload',
@@ -25,7 +26,7 @@ export class UploadComponent implements OnDestroy {
 
   public showAlert: boolean = false;
   public alertColor: string = 'blue';
-  public alertContent: string = 'Please wait! Your clip is being uploaded...';
+  public alertContent: string = '';
   public inSubmission: boolean = false;
   public showProgress: boolean = false;
   public percentage: number = 0;
@@ -42,6 +43,7 @@ export class UploadComponent implements OnDestroy {
     private _angularFireAuth: AngularFireAuth,
     private _clipService: ClipService,
     public _ffmpegService: FfmpegService,
+    private _translateService: TranslateService,
     private _router: Router,
   ) {
     _angularFireAuth.user.subscribe(
@@ -78,7 +80,8 @@ export class UploadComponent implements OnDestroy {
     this.showAlert = true;
     this.showProgress = true;
     this.alertColor = 'blue';
-    this.alertContent = 'Please wait! Your clip is being uploaded...';
+    this.alertContent = this._translateService.instant('upload.video.default.text');
+
     this.inSubmission = true;
     const clipFileName = this.getUniqueId(4);
     const clipPath = `clips/${clipFileName}.mp4`;
@@ -126,7 +129,8 @@ export class UploadComponent implements OnDestroy {
           }
           const clipDocumentRef = await this._clipService.createClip(clip);
           this.alertColor = 'green';
-          this.alertContent = 'Success! Your clip is now ready to share with the world.';
+          this.alertContent = this._translateService.instant('upload.video.success.text');
+
           this.showProgress = false;
           setTimeout(() => {
             this._router.navigate(['/clip', clipDocumentRef.id]);
@@ -135,7 +139,7 @@ export class UploadComponent implements OnDestroy {
         error: (error) => {
           this.uploadFormGroup.enable();
           this.alertColor = 'red';
-          this.alertContent = 'Upload Failed! Please try again later.';
+          this.alertContent = this._translateService.instant('upload.video.error.text');
           this.inSubmission = true;
           this.showProgress = false;
         }

@@ -58,6 +58,16 @@
   "manage.alert.success.text": "Success! your clip was updated successfully.",
   "manage.alert.error.text": "Something went wrong. try again later",
 
+  "upload.video.title": "Upload Video",
+  "upload.video.input.dragDrop": "Drop your file here (mp4 only!)",
+  "upload.video.input.thumbnail": "Select a Thumbnail",
+  "upload.video.input.label": "Title",
+  "upload.video.input.placeHolder": "Enter title",
+  "upload.video.form.submitButton": "Publish",
+  "upload.video.default.text": "Please wait! Your clip is being uploaded...",
+  "upload.video.success.text": "Success! Your clip is now ready to share with the world.",
+  "upload.video.error.text": "Upload Failed! Please try again later.",
+
   "validation.required": "Field is required.",
   "validation.minlength": "The value you inputted is {{actualLength}} characters long. It must be at least {{requiredLength}} characters long.",
   "validation.email": "You must enter a valid email.",
