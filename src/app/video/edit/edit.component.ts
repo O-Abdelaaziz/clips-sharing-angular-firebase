@@ -3,6 +3,7 @@ import {ModalService} from "../../services/modal.service";
 import IClip from "../../models/clip";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ClipService} from "../../services/clip.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-edit',
@@ -23,12 +24,13 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
   });
   alertColor: string = 'blue';
   showAlert: boolean = false;
-  alertContent: string = 'Please wait! Updating clip.';
+  alertContent: string = '';
   inSubmission: boolean = false;
 
   constructor(
     private _modelService: ModalService,
     private _clipService: ClipService,
+    private _translateService: TranslateService,
   ) {
   }
 
@@ -56,14 +58,14 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
     }
     this.showAlert = true;
     this.alertColor = 'blue';
-    this.alertContent = 'Please wait! Updating clip.';
+    this.alertContent = this._translateService.instant('manage.alert.default.text');
     this.inSubmission = true;
 
     try {
       await this._clipService.updateClip(this.clipId.value, this.title.value);
     } catch (e) {
       this.alertColor = 'red';
-      this.alertContent = 'Something went wrong. try again later';
+      this.alertContent = this._translateService.instant('manage.alert.error.text');
       this.inSubmission = false;
       return;
     }
@@ -71,6 +73,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges {
     this.update.emit(this.activeClip);
     this.inSubmission = false;
     this.alertColor = 'green';
-    this.alertContent = 'Success! your clip was updated successfully.';
+    this.alertContent = this._translateService.instant('manage.alert.success.text');
+
   }
 }

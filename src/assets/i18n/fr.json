@@ -48,6 +48,16 @@
   "register.alert.success.text": "Succès! Votre compte a été créé.",
   "register.alert.error.text": "Une erreur inattendue est apparue. Veuillez réessayer plus tard.",
 
+  "manage.uploadVideos": "Télécharger des vidéos",
+  "manage.sortVideo.option.recent": "Récents",
+  "manage.sortVideo.option.oldest": "Les plus anciens",
+  "manage.link.copied": "Lien copié avec succès.",
+  "manage.model.edit.title": "Modifier le clip",
+  "manage.model.input.label": "Titre",
+  "manage.alert.default.text": "S'il vous plaît, attendez! Clip de mise à jour.",
+  "manage.alert.success.text": "Succès! votre clip a été mis à jour avec succès.",
+  "manage.alert.error.text": "Quelque chose s'est mal passé. Réessayez plus tard",
+
   "validation.required": "Champ requis.",
   "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
   "validation.email": "Vous devez entrer un email valide.",

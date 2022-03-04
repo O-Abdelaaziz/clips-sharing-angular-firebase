@@ -1,6 +1,6 @@
 <app-modal modalId="editClip">
   <!-- Edit Modal -->
-  <p class="text-2xl font-bold">Edit Video</p>
+  <p class="text-2xl font-bold">{{ 'manage.model.edit.title' | translate}}</p>
   <app-alert [color]="alertColor" *ngIf="showAlert">
     {{alertContent}}
   </app-alert>
@@ -8,7 +8,7 @@
   <form [formGroup]="editFormGroup" (ngSubmit)="onEdit()">
     <!-- Title -->
     <div class="mt-4">
-      <label class="block text-xl mb-4">Title</label>
+      <label class="block text-xl mb-4">{{ 'manage.model.input.label' | translate}}</label>
       <app-input [control]="title" placeHolder="Enter title"></app-input>
     </div>
 

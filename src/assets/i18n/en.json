@@ -48,6 +48,16 @@
   "register.alert.success.text": "Success! Your account has been created",
   "register.alert.error.text": "An unexpected error occurred. Please try again later.",
 
+  "manage.uploadVideos": "Upload Videos",
+  "manage.sortVideo.option.recent": "Recent Uploads",
+  "manage.sortVideo.option.oldest": "Oldest Uploads",
+  "manage.link.copied": "Link copied successfully.",
+  "manage.model.edit.title": "Edit Clip",
+  "manage.model.input.label": "Title",
+  "manage.alert.default.text": "Please wait! Updating clip.",
+  "manage.alert.success.text": "Success! your clip was updated successfully.",
+  "manage.alert.error.text": "Something went wrong. try again later",
+
   "validation.required": "Field is required.",
   "validation.minlength": "The value you inputted is {{actualLength}} characters long. It must be at least {{requiredLength}} characters long.",
   "validation.email": "You must enter a valid email.",
