@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,12 @@ export class LoginComponent implements OnInit {
 
   public showAlert: boolean = false;
   public alertColor: string = 'blue';
-  public alertContent: string = 'Please wait! we are logging you in...';
+  public alertContent: string = '';
   public inSubmission: boolean = false;
 
-  constructor(private _angularFireAuth: AngularFireAuth) {
+  constructor(
+    private _angularFireAuth: AngularFireAuth,
+    private _translateService: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   async onLogin() {
     this.showAlert = true;
-    this.alertContent = 'Please wait! Your account is being created.';
+    this.alertContent = this._translateService.instant('login.alert.default.text');
+
     this.alertColor = 'blue';
     this.inSubmission = true;
 
@@ -35,11 +39,11 @@ export class LoginComponent implements OnInit {
         this.credentials.email, this.credentials.password
       );
     } catch (e) {
-      console.log(e)
       this.inSubmission = false;
 
     }
-    this.alertContent = "Success! Your hav been connected successfully";
+    this.alertContent = this._translateService.instant('login.alert.success.text');
+
     this.alertColor = "green";
   }
 }

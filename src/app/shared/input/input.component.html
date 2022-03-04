@@ -12,7 +12,7 @@
     It must be at least {{control.errors?.['minlength']?.requiredLength}} characters long.
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['email']">
-    You must enter a valid email.
+    {{'login.email.validation' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['emailTaken']">
     Email taken. Please try another email.
@@ -24,10 +24,7 @@
     Value to High.
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['pattern']">
-    Password must be at least: <br>
-    - 8 characters. <br>
-    - least 1 uppercase letter, 1 lowercase letter, and 1 number. <br>
-    - can contain special characters.
+    {{'login.password.validation' | translate}}
   </p>
   <p class="text-red-400" *ngIf=" control.errors?.['notMatch']">
     Password do not match.

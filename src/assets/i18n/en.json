@@ -7,7 +7,17 @@
   "navbar.about": "About",
   "home.welcomeMessage.title": "CLIP IT AND SHIP IT!",
   "home.welcomeMessage.description": "The #1 app to watch, clip, and share your awesome gaming moments with your friends and the world! With our world-class tools, we make it incredibly easy to share your videos. Get started today!",
-  "home.section.name":"Latest"
+  "home.section.name":"Latest",
+  "login.modal.title": "Your Account",
+  "login.modal.label": "Login",
+  "login.email.label": "Email",
+  "login.email.placeholder": "Enter Email",
+  "login.email.validation": "You must enter a valid email.",
+  "login.password.label": "Password",
+  "login.password.placeholder": "Enter Password",
+  "login.password.validation": "Password must be at least:\n    - 8 characters.\n    - least 1 uppercase letter, 1 lowercase letter, and 1 number.\n    - can contain special characters.",
+  "login.alert.default.text": "Please wait! Your account is being created.",
+  "login.alert.success.text": "Success! Your has been connected successfully."
 
 }
 

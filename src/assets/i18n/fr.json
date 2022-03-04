@@ -7,5 +7,16 @@
   "navbar.about": "Apropos",
   "home.welcomeMessage.title": "CLIPEZ-LE ET EXPÉDEZ-LE !s",
   "home.welcomeMessage.description": "L'application n°1 pour regarder, filmer et partager vos super moments de jeu avec vos amis et le monde ! Grâce à nos outils de classe mondiale, nous facilitons incroyablement le partage de vos vidéos. Commencer aujourd'hui!",
-  "home.section.name":"Dernier"
+  "home.section.name":"Dernier",
+  "login.modal.title": "Votre compte",
+  "login.modal.label": "Connexion",
+  "login.email.label": "E-mail",
+  "login.email.placeholder": "Entrez l'e-mail",
+  "login.email.validation": "Vous devez entrer un email valide.",
+  "login.password.label": "Mot de passe",
+  "login.password.placeholder": "Entrer le mot de passe",
+  "login.password.validation": "Le mot de passe doit être au moins : <br>\n     - 8 caractères. <br>\n     - au moins 1 lettre majuscule, 1 lettre minuscule et 1 chiffre. <br>\n     - peut contenir des caractères spéciaux.",
+  "login.alert.default.text": "S'il vous plaît, attendez! nous vous connectons...",
+  "login.alert.success.text": "Succès! Votre a été connecté avec succès."
+
 }
