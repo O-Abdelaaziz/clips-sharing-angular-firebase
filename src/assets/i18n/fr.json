@@ -71,6 +71,8 @@
   "clip.uploader.name": "Téléchargé par {{displayName}} le \n",
   "clip.more.clips": "Plus de clips",
 
+  "clipsList.content.not.available": "Aucun extrait disponible",
+
   "validation.required": "Champ requis.",
   "validation.minlength": "La valeur que vous avez saisie contient {{actualLength}} caractères. Il doit comporter au moins {{requiredLength}} caractères.",
   "validation.email": "Vous devez entrer un email valide.",

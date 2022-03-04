@@ -39,5 +39,5 @@
   </a>
 </div>
 <app-alert [color]="'red'" *ngIf="_clipService.pageClips.length < 1">
-  No clips available
+  {{'clipsList.content.not.available' | translate}}
 </app-alert>
