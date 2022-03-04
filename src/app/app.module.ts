@@ -16,7 +16,9 @@ import {ClipComponent} from './clip/clip.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ClipsListComponent} from './clips-list/clips-list.component';
 import {SharedModule} from "./shared/shared.module";
-import { FirebaseTimestampPipe } from './pipes/firebase-timestamp.pipe';
+import {FirebaseTimestampPipe} from './pipes/firebase-timestamp.pipe';
+import {NotifierModule} from "angular-notifier";
+import {customNotifierOption} from "./config/customNotifierOption";
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { FirebaseTimestampPipe } from './pipes/firebase-timestamp.pipe';
     VideoModule,
     SharedModule,
     AppRoutingModule,
+    NotifierModule.withConfig(customNotifierOption),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 <!-- Header -->
 <app-nav></app-nav>
 <router-outlet></router-outlet>
-
 <!-- Auth Modal -->
 <app-auth-modal *ngIf="!(_authService.isAuthenticatedWithDelay$ | async)"></app-auth-modal>
+<notifier-container></notifier-container>
 
 

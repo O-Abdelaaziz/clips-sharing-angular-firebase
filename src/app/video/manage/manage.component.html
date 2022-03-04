@@ -31,10 +31,13 @@
         <a href="javascript:void(0)" [routerLink]="['/','clip',clip.docId]" class="font-bold mb-2">
           {{clip.title}}
         </a>
-        <a href="javascript:void(0)" (click)="onCopyToClipboard($event,clip.docId)" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded">
-          Copy Link
+        <a href="javascript:void(0)" (click)="onCopyToClipboard($event,clip.docId)"
+           class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded">
+          <span class="material-icons text-base">content_copy</span>
         </a>
-
+        <a href="javascript:void(0)" [routerLink]="['/','clip',clip.docId]" target="_blank" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded">
+          <span class="material-icons text-base">open_in_new</span>
+        </a>
       </div>
 
       <!-- Actions -->

@@ -8,6 +8,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskModule} from "ngx-mask";
 import {AlertComponent} from './alert/alert.component';
 import {EventBlockerDirective} from './directives/event-blocker.directive';
+import {NotifierModule} from "angular-notifier";
+import {customNotifierOption} from "../config/customNotifierOption";
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import {EventBlockerDirective} from './directives/event-blocker.directive';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
   ],
   exports: [
     ModalComponent,

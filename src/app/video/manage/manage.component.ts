@@ -4,6 +4,8 @@ import {ClipService} from "../../services/clip.service";
 import IClip from "../../models/clip";
 import {ModalService} from "../../services/modal.service";
 import {BehaviorSubject} from "rxjs";
+import {AngularNotifierService} from "../../shared/services/angular-notifier.service";
+import {NotificationType} from "../../enums/notification-type.enum";
 
 @Component({
   selector: 'app-manage',
@@ -19,6 +21,7 @@ export class ManageComponent implements OnInit {
   constructor(
     private _clipService: ClipService,
     private _modalService: ModalService,
+    private _angularNotifierService: AngularNotifierService,
     private _router: Router,
     private _activatedRoute: ActivatedRoute
   ) {
@@ -97,5 +100,6 @@ export class ManageComponent implements OnInit {
     }
     const url = `${location.origin}/clip/${docId}`;
     await navigator.clipboard.writeText(url);
+    this._angularNotifierService.showNotification(NotificationType.DEFAULT, "Link copied successfully.");
   }
 }
