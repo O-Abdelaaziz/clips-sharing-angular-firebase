@@ -35,7 +35,6 @@ export class NavComponent implements OnInit {
   }
 
   useLanguage(language: string): void {
-    console.log('click');
     this._translateService.use(language);
   }
 }

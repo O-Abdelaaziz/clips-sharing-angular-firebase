@@ -8,21 +8,21 @@
       <ul class="flex flex-row mt-1">
         <!-- Navigation Links -->
         <li *ngIf="!(_authService.isAuthenticated$ | async); else authenticatedLinks">
-          <a class="px-2" href="javascript:void(0)" (click)="onOpenModal($event)">Login / Register</a>
+          <a class="px-2" href="javascript:void(0)" (click)="onOpenModal($event)">{{'navbar.login' | translate}} / {{'navbar.register' | translate}}</a>
         </li>
         <ng-template #authenticatedLinks>
           <li>
-            <a class="px-2" href="javascript:void(0)" routerLink="/manage" [queryParams]="{sort: '1'}" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">Manage</a>
+            <a class="px-2" href="javascript:void(0)" routerLink="/manage" [queryParams]="{sort: '1'}" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">{{'navbar.manage'| translate}}</a>
           </li>
           <li>
-            <a class="px-2" href="javascript:void(0)" routerLink="/upload" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">Upload</a>
+            <a class="px-2" href="javascript:void(0)" routerLink="/upload" routerLinkActive="text-indigo-400 font-bold" [routerLinkActiveOptions]="{exact:true}">{{'navbar.upload'| translate}}</a>
           </li>
           <li>
-            <a class="px-2" href="javascript:void(0)" (click)="onLogout($event)">logout</a>
+            <a class="px-2" href="javascript:void(0)" (click)="onLogout($event)">{{'navbar.logout'| translate}}</a>
           </li>
         </ng-template>
         <li routerLinkActive="text-indigo-400 font-bold">
-          <a class="px-2" href="javascript:void(0)" routerLink="/about" routerLinkActive="text-indigo-400 font-bold">About</a>
+          <a class="px-2" href="javascript:void(0)" routerLink="/about" routerLinkActive="text-indigo-400 font-bold">{{'navbar.about'| translate}}</a>
         </li>
       </ul>
       <!-- Language Switcher -->

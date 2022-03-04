@@ -1,6 +1,13 @@
 {
+  "navbar.login": "Login",
+  "navbar.register": "Register",
+  "navbar.manage": "Manage",
+  "navbar.upload": "Upload",
+  "navbar.logout": "Logout",
+  "navbar.about": "About",
   "home.welcomeMessage.title": "CLIP IT AND SHIP IT!",
   "home.welcomeMessage.description": "The #1 app to watch, clip, and share your awesome gaming moments with your friends and the world! With our world-class tools, we make it incredibly easy to share your videos. Get started today!",
   "home.section.name":"Latest"
+
 }
 
