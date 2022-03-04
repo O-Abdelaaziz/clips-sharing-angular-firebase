@@ -19,7 +19,7 @@ import {FirebaseTimestampPipe} from './pipes/firebase-timestamp.pipe';
 import {NotifierModule} from "angular-notifier";
 import {customNotifierOption} from "./config/customNotifierOption";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 @NgModule({
@@ -42,6 +42,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     SharedModule,
     AppRoutingModule,
     NotifierModule.withConfig(customNotifierOption),
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
