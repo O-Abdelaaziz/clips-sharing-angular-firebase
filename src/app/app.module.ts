@@ -16,6 +16,7 @@ import {ClipComponent} from './clip/clip.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ClipsListComponent} from './clips-list/clips-list.component';
 import {SharedModule} from "./shared/shared.module";
+import { FirebaseTimestampPipe } from './pipes/firebase-timestamp.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {SharedModule} from "./shared/shared.module";
     ClipComponent,
     NotFoundComponent,
     ClipsListComponent,
+    FirebaseTimestampPipe,
   ],
   imports: [
     BrowserModule,
