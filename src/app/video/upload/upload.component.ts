@@ -70,9 +70,9 @@ export class UploadComponent implements OnDestroy {
     this.screenshots = await this._ffmpegService.getScreenshots(this.file);
     this.selectedScreenshots = this.screenshots[0];
 
-    this.nextStep = true;
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
-    console.log(this.title)
+
+    this.nextStep = true;
   }
 
   async onUploadFile() {
